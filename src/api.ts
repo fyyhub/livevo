@@ -1,8 +1,6 @@
 import type { Platform, PlatformApiItem, Room, RoomApiItem, StreamFormat } from "./types";
 
-const DEFAULT_API_ROOT = import.meta.env.DEV
-  ? "/mf-api/mf/"
-  : "http://api.hclyz.com:81/mf/";
+const DEFAULT_API_ROOT = "/mf-api/mf/";
 
 export const API_ROOT = import.meta.env.VITE_API_ROOT ?? DEFAULT_API_ROOT;
 export const SOURCE_DESCRIPTION_URL = "http://api.hclyz.com:81/mf/json.txt";
@@ -68,10 +66,6 @@ export async function loadRooms(platform: Platform, signal?: AbortSignal): Promi
 }
 
 export function getPlaybackUrl(room: Room): string {
-  if (!import.meta.env.DEV) {
-    return room.streamUrl;
-  }
-
   if (room.format === "flv" || room.format === "mp4") {
     return `/stream-proxy?url=${encodeURIComponent(room.streamUrl)}`;
   }
