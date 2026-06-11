@@ -1,6 +1,10 @@
 {
   "tasks": {
-    "build": "npm run build",
-    "start": "deno run --allow-net --allow-read deno-server.ts"
+    "build": "npm install && npm run build",
+    "start": "deno run --allow-net --allow-read --allow-env deno-server.ts"
+  },
+  "deploy": {
+    "entrypoint": "deno-server.ts",
+    "include": ["dist", "deno-server.ts"]
   }
 }
