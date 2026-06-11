@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "build": "npm run build",
+    "start": "deno run --allow-net --allow-read deno-server.ts"
+  }
+}
